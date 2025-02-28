@@ -1,14 +1,5 @@
-import React, { useState, useEffect } from "react";
-import {
-  TextField,
-  Button,
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Container,
-  Box,
-} from "@mui/material";
+import { useState, useEffect } from "react";
+import {TextField,Button,Card,Typography,Container,Box} from "@mui/material";
 import { getTodos, createTodo, toggleTodo } from "../REST_URLs/rest_url";
 
 const TodoApp = () => {
@@ -54,12 +45,15 @@ const TodoApp = () => {
         minHeight: "100vh",
       }}
     >
-      <Grid container spacing={3}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", md: "1fr 2fr" },
+          gap: 3,
+        }}
+      >
         {/* Left Side - Add Task */}
-        <Grid
-          item
-          xs={12}
-          md={4}
+        <Box
           sx={{
             backgroundColor: "#ffffff",
             padding: 3,
@@ -96,10 +90,10 @@ const TodoApp = () => {
           >
             Add
           </Button>
-        </Grid>
+        </Box>
 
         {/* Right Side - Task List */}
-        <Grid item xs={12} md={8}>
+        <Box>
           {tasks.map((task) => (
             <Card
               key={task.id}
@@ -127,8 +121,8 @@ const TodoApp = () => {
               </Button>
             </Card>
           ))}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {TextField,Button,Card,Typography,Container,Box} from "@mui/material";
+import { TextField, Button, Card, Typography, Container, Box } from "@mui/material";
 import { getTodos, createTodo, toggleTodo } from "../REST_URLs/rest_url";
 
 const TodoApp = () => {
@@ -40,11 +40,16 @@ const TodoApp = () => {
       maxWidth="lg"
       sx={{
         padding: 4,
-        backgroundColor: "#f5f5f5",
+        backgroundColor: "#ECEFF1",
         borderRadius: 2,
         minHeight: "100vh",
       }}
     >
+      {/* Main Title */}
+      <Typography variant="h4" sx={{ textAlign: "center", fontWeight: "bold", mb: 3, color: "#1565C0" }}>
+        Todo Application
+      </Typography>
+
       <Box
         sx={{
           display: "grid",
@@ -58,10 +63,10 @@ const TodoApp = () => {
             backgroundColor: "#ffffff",
             padding: 3,
             borderRadius: 2,
-            boxShadow: 2,
+            boxShadow: 3,
           }}
         >
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6" gutterBottom sx={{ color: "#1565C0" }}>
             Add a Task
           </Typography>
           <TextField
@@ -77,14 +82,12 @@ const TodoApp = () => {
             fullWidth
             variant="outlined"
             value={newTask.description}
-            onChange={(e) =>
-              setNewTask({ ...newTask, description: e.target.value })
-            }
+            onChange={(e) => setNewTask({ ...newTask, description: e.target.value })}
             margin="normal"
           />
           <Button
             variant="contained"
-            sx={{ backgroundColor: "#0000FF", color: "#fff", mt: 2 }}
+            sx={{ backgroundColor: "#1565C0", color: "#fff", mt: 2 }}
             fullWidth
             onClick={handleAddTask}
           >
@@ -101,20 +104,22 @@ const TodoApp = () => {
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
-                backgroundColor: "#D3D3D3",
+                backgroundColor: "#E3F2FD",
                 padding: 2,
                 mb: 2,
+                borderLeft: "5px solid #1565C0",
+                boxShadow: 2,
               }}
             >
               <Box>
-                <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                <Typography variant="h6" sx={{ fontWeight: "bold", color: "#1565C0" }}>
                   {task.title}
                 </Typography>
-                <Typography>{task.description}</Typography>
+                <Typography sx={{ color: "#424242" }}>{task.description}</Typography>
               </Box>
               <Button
                 variant="contained"
-                sx={{ backgroundColor: "#A9A9A9", color: "#000" }}
+                sx={{ backgroundColor: "#43A047", color: "#fff" }}
                 onClick={() => handleCompleteTask(task.id)}
               >
                 Done
